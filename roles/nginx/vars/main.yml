@@ -1,0 +1,4 @@
+listen_on: 90
+hostname_prefix: nginx-host-
+path_to_root: /opt/static-content
+path_to_archive: /tmp/content.zip

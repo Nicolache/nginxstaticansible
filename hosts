@@ -1,0 +1,12 @@
+# Start: ansible-playbook play.yml -kK
+[ubuntu16-04-servers]
+IP.ADD.RE.SS
+IP.ADD.RE.SS
+IP.ADD.RE.SS
+IP.ADD.RE.SS
+
+[ubuntu18-04-servers]
+IP.ADD.RE.SS
+IP.ADD.RE.SS
+IP.ADD.RE.SS
+IP.ADD.RE.SS

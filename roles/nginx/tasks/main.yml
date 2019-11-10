@@ -1,0 +1,51 @@
+---
+- name: Create static content directory.
+  file:
+    path: "{{ path_to_root }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install unzip.
+  apt:
+    name=unzip
+    state=present
+    update_cache=yes
+
+- name: Extract content.zip
+  unarchive:
+    src: "{{ path_to_archive }}"
+    dest: /opt/static-content
+
+- apt_repository:
+    repo: deb http://nginx.org/packages/ubuntu xenial nginx
+    state: present
+  when:
+    ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: Add an Apt signing key.
+  apt_key:
+    id: ABF5BD827BD9BF62
+    url: https://nginx.org/keys/nginx_signing.key
+    state: present
+  when:
+    ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: Install nginx on 16.04
+  apt:
+    name=nginx
+    state=latest
+    update_cache=yes
+  when:
+    ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+  notify:
+    - nginx systemd
+
+- name: Replace default nginx settings.
+  template:
+    src=templates/default.conf
+    dest=/etc/nginx/conf.d/default.conf
+
+- hostname:
+    name: "{{hostname_prefix}}{{ ansible_host.split('.')[-1] }}"

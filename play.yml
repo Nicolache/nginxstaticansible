@@ -1,0 +1,28 @@
+---
+- hosts: ubuntu16-04-servers
+  vars:
+    nginx_user: www-data
+  become:
+    true
+  become_method:
+    sudo
+  become_user:
+    root
+  remote_user:
+    ansible
+  roles:
+   - nginx
+
+- hosts: ubuntu18-04-servers
+  vars:
+    nginx_user: www-data
+  become:
+    true
+  become_method:
+    sudo
+  become_user:
+    root
+  remote_user:
+    ansible
+  roles:
+   - nginx
