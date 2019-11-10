@@ -1,0 +1,14 @@
+*
+!.gitignore
+!roles/
+!roles/nginx/
+!roles/nginx/tasks/
+!roles/nginx/tasks/main.yml
+!roles/nginx/templates/
+!roles/nginx/templates/default
+!roles/nginx/vars
+!roles/nginx/vars/main.yml
+!roles/nginx/handlers
+!roles/nginx/handlers/main.yml
+!play.yml
+!hosts
