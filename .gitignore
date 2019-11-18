@@ -5,7 +5,7 @@
 !roles/nginx/tasks/
 !roles/nginx/tasks/main.yml
 !roles/nginx/templates/
-!roles/nginx/templates/default
+!roles/nginx/templates/default.conf
 !roles/nginx/vars
 !roles/nginx/vars/main.yml
 !roles/nginx/handlers
